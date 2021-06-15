@@ -27,14 +27,19 @@ def checkHTML(f):
                  'Content-Type': 'text/html; ' +
                  'charset=UTF-8'})
     messages = r.json()["messages"]
+    error_count = 0
     if messages:
         for message in messages:
-            print(message)
-    return len(messages)
+            if message["type"] == "error":
+                error_count += 1
+                print(f)
+                print(message)
+    return [error_count, len(messages)-error_count]
 
 
 def validate_me():
     issues_found = 0
+    html_warnings = 0
     file_arr = os.listdir()
     file_arr.remove(".git")
     for f in file_arr:
@@ -47,11 +52,14 @@ def validate_me():
             giggle = (commands.getstatusoutput(cmd % f))
 
         elif f[-5:] == ".html":
-            issues_found += checkHTML(f)
+            htmlissues = checkHTML(f)
+            issues_found += htmlissues[0]
+            html_warnings += htmlissues[1]
         elif os.path.isdir(f):
             for x in os.listdir(f):
                 file_arr.append(f+"/"+x)
     print(issues_found)
+    print("Html Warnings: " + str(html_warnings))
 
 if __name__ == "__main__":
     validate_me()
