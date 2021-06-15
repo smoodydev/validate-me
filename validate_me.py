@@ -1,6 +1,5 @@
 import requests
 import pep8
-from bs4 import BeautifulSoup
 import os
 from w3c_validator import validate as cssval
 import subprocess as commands
