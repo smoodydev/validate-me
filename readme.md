@@ -11,11 +11,13 @@ A single use python file designed to be used to validate all other files within 
 
 A) Add to Existing project
 - Add validate_me.py to your main directory
+
 B) Clone code to be validated
 - git clone https://github.com/*USERNAME*/*REPOSITORY*.git *FOLDER_NAME*
+
 (FOLDER_NAME will be a new folder created in the workspace to hold the cloned repository)
 
-Once you have run -
+Once you have, run -
 - python3 validate_me.py
 
 ## Current Features
