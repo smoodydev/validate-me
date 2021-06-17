@@ -1,4 +1,4 @@
 {
-    "esnext": true,
-    "jquery": true
+    "jquery": true,
+    "esversion": 6
 }

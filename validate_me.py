@@ -46,7 +46,6 @@ def checkJS(f):
     else:
         cmd = "jshint %s"
     status, output = commands.getstatusoutput(cmd % f)
-    print(cmd % f)
     messages = output.split("\n")[:-2]
     for message in messages:
         print(message)
@@ -73,7 +72,7 @@ def validate_me():
             for x in os.listdir(f):
                 file_arr.append(f+"/"+x)
     print(issues_found)
-    print("Html Warnings: " + str(html_warnings))
+    print("Additional Html Warnings: " + str(html_warnings))
 
 if __name__ == "__main__":
     validate_me()
