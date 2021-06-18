@@ -3,6 +3,7 @@ import pep8
 import os
 from w3c_validator import validate as cssval
 import subprocess as commands
+import sys
 # import commands <-- for python 2
 
 
@@ -74,5 +75,11 @@ def validate_me():
     print(issues_found)
     print("Additional Html Warnings: " + str(html_warnings))
 
+
+def startup():
+    commands.getoutput('npm install -g jshint')
 if __name__ == "__main__":
-    validate_me()
+    if len(sys.argv) == 2:
+        globals()[sys.argv[1]]()
+    else:
+        validate_me()
